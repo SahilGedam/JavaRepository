@@ -6,57 +6,44 @@ interface Holidable {
 	String nextholiday = "Monday"; // interface
 }
 
-abstract class Manager { // abstraction
-	 String manName ;
-	  int age ;
-	 String shopName;
-	 Manager (){
-		 manName = "Ambani";
-		 age =60;
-		 shopName="Cafetaria";
-	 }
-	 void showManager() {
-		 System.out.println(" Manager name is "+ manName+ "\n"+ " Manager age is "+ age);
-	 }
+abstract class Manager { // abstract class
+	String manName;
+	int age;
+	private String shopName;  // encapsulation
 
-	
-  
-	public String getName1() { // encapsulation
-		return manName;
+	Manager() {
+		manName = "Ambani";
+		age = 60;
+		setShopName("Cafetaria");
 	}
 
-
-
-	public void setName1(String manName) {
-		this.manName = manName;
+	void showManager() {
+		System.out.println(" Manager name is " + manName + "\n" + " Manager age is " + age);
 	}
 
-
-
-	public int getAge() {
-		return age;
+	public String getShopName() {  // getter
+		return shopName;
 	}
 
-
-
-	public void setAge(int age) {
-		this.age = age;
+	public String setShopName() { // setter
+		return shopName;
 	}
-	
-
-
 
 	void changeShopName() {
-		this.shopName="Chai Tapri";   // this keyword
+		this.setShopName("Chai Tapri"); // this keyword
+	}
+
+	public void setShopName(String shopName) {
+		this.shopName = shopName;
 	}
 }
 
-class Employee extends Manager implements Holidable { //
+class Employee extends Manager implements Holidable { // inheritance
 
 	Scanner sc = new Scanner(System.in);
 	String empName;
 	int id, manP, tp1;
-	//int t1;
+	// int t1;
 	char ch1, ch2;
 
 	void employee1() {
@@ -82,19 +69,15 @@ class Employee extends Manager implements Holidable { //
 		} else if (ch1 == 'y') {
 			System.out.println("name will be changed to ");
 			changeShopName();
-			System.out.println(" new shop name is " + shopName);
-			
-			
-			
+			System.out.println(" new shop name is " + getShopName());
+
 		}
 
 	}
 
-
-
 	@Override
 	public void changeShopName() { // overriding
-		shopName = sc.next();
+		setShopName(sc.next());
 
 	}
 
@@ -103,14 +86,11 @@ class Employee extends Manager implements Holidable { //
 public class CoffeeShop extends Employee { // inheritance
 	Scanner sc = new Scanner(System.in);
 	int i1, i2, i3, totalcups, p1, p2, p3, totalprice1, pass;
-	 double totalprice;
+	double totalprice;
 
+	void coffeeShop1() {
 
-
-	 void coffeeShop1() { 
-		
-
-		System.out.println("welcome to " + shopName);
+		System.out.println("welcome to " + getShopName());
 		System.out.println("Are you customer or employee");
 		System.out.println("press c for customer " + "\n" + "press e for employee");
 		char ch = sc.next().charAt(0);
@@ -132,7 +112,7 @@ public class CoffeeShop extends Employee { // inheritance
 				employee1();
 
 			} else if (pass == 4321) {
-				System.out.println("welcome manager "+ manName);
+				System.out.println("welcome manager " + manName);
 				manager1();
 			} else {
 				System.out.println("invalid password");
@@ -178,24 +158,23 @@ public class CoffeeShop extends Employee { // inheritance
 		p2 = i2 * 5;
 		p3 = i3 * 10;
 		totalprice1 = p1 + p2 + p3;
-		
-		totalprice=totalprice1*1.18;
+
+		totalprice = totalprice1 * 1.18;
 
 	}
+
 	void changeManager() {
-		super.manName= "raja"; // super keyword
-		super.age=55;
-		
+		super.manName = "raja"; // super keyword
+		super.age = 55;
+
 	}
 
 	public static void main(String[] args) {
-		
+
 		CoffeeShop c = new CoffeeShop();
 		c.coffeeShop1();
 //		c.changeManager();
 //		c.showManager();
-		
-		
 
 	}
 }

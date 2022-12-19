@@ -16,6 +16,7 @@ public class Addition {
 		Scanner scan = new Scanner(System.in);
 		b = scan.nextInt();
 		System.out.print(a+b);
+
 		
 		
 		
