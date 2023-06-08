@@ -19,5 +19,4 @@ class Horse extends Animal {
 		System.out.println("i am in animal");
 	}
 
-
 }
